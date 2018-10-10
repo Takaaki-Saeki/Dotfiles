@@ -4,4 +4,8 @@ export PATH="/anaconda3/bin:$PATH"
 
 alias brew="env PATH=${PATH/\/anaconda3\/bin:/} brew"
 
-source ~/.bashrc
+if [ -f ~/.bashrc ]; then
+　. ~/.bashrc
+fi
+
+
