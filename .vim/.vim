@@ -1,0 +1,1 @@
+/Users/saeki-takaaki/Documents/dotfiles/.vim
