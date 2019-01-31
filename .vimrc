@@ -1,3 +1,32 @@
+"------------プラグイン関係-------------------------
+set nocompatible
+filetype off
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+
+Plugin 'VundleVim/Vundle.vim'
+
+" 導入したいプラグインを以下に列挙
+" Plugin '[Github Author]/[Github repo]' の形式で記入
+Plugin 'vim-jp/vim-cpp'
+Plugin 'thinca/vim-quickrun'
+
+call vundle#end()
+filetype plugin indent on
+
+"　その他のカスタム設定を以下に書く
+
+"--------------QuickRunの設定-----------------------
+" g:quickrun_config の初期化
+if !exists("g:quickrun_config")
+    let g:quickrun_config={}
+endif
+
+let g:quickrun_config.cpp = {
+\   'command': 'g++',
+\   'cmdopt': '-std=c++14 -Wall',
+\   'hook/time/enable' : 1
+\ }
 
 "--------------操作系-------------------------------
 " バックスペースを有効にする
@@ -18,14 +47,14 @@ vnoremap k gk
 " Yを行末までのヤンクにする
 nnoremap Y y$
 
-" ビープ音を可視化
-set visualbell
-
 " 行末の一文字先までカーソルを移動できるようにする
 set virtualedit=onemore
 
 " インサートモードでjjと入力した時はescとみなす
 inoremap jj <Esc>
+
+" クリップボードを使えるようにする
+set clipboard+=unnamed
 
 "--------------タブ系-----------------------------------
 " タブ、インデントの設定
@@ -59,17 +88,10 @@ autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 " コマンドラインの補完
 set wildmode=list:longest
 
-" スペルチェック機能を使う
-set spell
-set spelllang=en,cjk "日本語を除外
-
 " 置換の際のgオプションをデフォルトで有効化する
 set gdefault
 
 "--------------見た目系----------------------------------
-" カラムラインを引く
-set colorcolumn=80
-
 " 行番号を表示
 set number
 
@@ -86,20 +108,8 @@ else
   let &t_EI = "\<Esc>]50;CursorShape=0\x7"
 endif
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+" シンタックスハイライトの有効化
+syntax enable
 
 
 
